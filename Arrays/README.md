@@ -8,3 +8,4 @@ This folder documents my journey of mastering array problems in C++ by following
 Problems will be added here as I solve them.
 
 - Max Sum Subarray of size K
+- Maximum Average Subarray I
