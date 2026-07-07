@@ -1,6 +1,6 @@
 # Sliding Window
 
-This folder documents my journey of mastering array problems in C++ by following common DSA patterns used in coding interviews.
+This folder documents my journey of mastering Sliding Window Pattern on string and arrays in C++.
 
 ## Pattern-Based Learning
 
