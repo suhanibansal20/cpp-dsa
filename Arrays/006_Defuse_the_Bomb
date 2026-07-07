@@ -1,0 +1,63 @@
+/*
+----------------------------------------------------
+Problem : Defuse the Bomb
+Platform : LeetCode (1652)
+Difficulty : Easy
+Topic : Arrays
+
+Approach:
+Use a sliding window and modulo to handle circular elements.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> decrypt(vector<int>& code, int k) {
+        vector<int> res(code.size(),0);
+        
+        if(k>0)
+        {    int x=1;
+            int s=0;
+            for(int i=0;i<k;i++)
+            {
+                s+=code[i+1];
+            }
+            res[0]=s;
+            for(int i=1;i<code.size();i++)
+            {
+                s+= code[(i+k)%code.size()]-code[i];
+                res[x]=s;
+                x++;
+            }
+            return res;
+        }
+        if(k<0)
+        {  k=abs(k);
+        reverse(code.begin(),code.end());
+         int x=1;
+            int s=0;
+            for(int i=0;i<k;i++)
+            {
+                s+=code[i+1];
+            }
+            res[0]=s;
+            for(int i=1;i<code.size();i++)
+            {
+                s+= code[(i+k)%code.size()]-code[i];
+                res[x]=s;
+                x++;
+            }
+            reverse(res.begin(),res.end());
+            return res;
+
+        }
+         fill(res.begin(),res.end(),0);
+        return res;
+    }
+};
