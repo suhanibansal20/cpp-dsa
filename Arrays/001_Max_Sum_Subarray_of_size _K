@@ -1,1 +1,45 @@
+/*
+----------------------------------------------------
+Problem : Max Sum Subarray of size K
+Platform : Geeksforgeeks
+Difficulty : Easy
+Topic : Arrays
 
+Approach:
+Use sliding window concept.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int maxSubarraySum(vector<int>& arr, int k) {
+        // code here
+        int s=0;
+        
+        
+        for(int i=0;i<k;i++)
+        {
+            s+=arr[i];
+            
+        }
+          int m=s;
+        
+        for(int i=k;i<arr.size();i++)
+        {
+            s+=arr[i]-arr[i-k];
+            m=max(m,s);
+            
+        }
+        return m;
+        
+        
+    }
+};
+
+  
