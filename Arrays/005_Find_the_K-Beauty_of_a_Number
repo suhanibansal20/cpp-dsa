@@ -1,0 +1,46 @@
+/*
+----------------------------------------------------
+Problem : Find the K-Beauty of a Number
+Platform : LeetCode (2269)
+Difficulty : Easy
+Topic : Strings
+
+Approach:
+Use a Sliding window, covnert int into string to use this pattern.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int divisorSubstrings(int num, int k) {
+        int ct=0;
+        string num1= to_string(num);
+        
+        string res="";
+        for(int i=0;i<k;i++)
+        {
+            res+= num1[i];
+
+        }
+        int m=stoi(res);
+        if(m!=0 && num%m==0){ct++;}
+        for(int i=k;i<num1.size();i++)
+        {
+            res+=num1[i];
+            res.erase(0,1);
+            m=stoi(res);
+            if(m==0){continue;}
+            if(num%m==0)
+            {
+                ct++;
+            }
+        }
+return ct;
+    }
+};
