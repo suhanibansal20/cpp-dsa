@@ -1,0 +1,44 @@
+/*
+----------------------------------------------------
+Problem : K Radius Subarray Averages
+Platform : LeetCode(2090)
+Difficulty : Medium
+Topic : Arrays, Vectors
+
+Approach:
+Use a Slding window approach but the window size is not what given in the question but have to find out.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    vector<int> getAverages(vector<int>& nums, int k) {
+        vector<int> res(nums.size(),-1);
+       
+       int av=0;
+       long long s=0;
+       if(nums.size()<2*k+1){return res;}
+       for(int i=0;i<2*k+1;i++)
+       {
+        s += nums[i];
+       }
+       av=s/(2*k+1);
+       int x=k+1;
+       res[k]=av;
+       
+       for(int i=2*k+1;i<nums.size();i++)
+       {
+       
+        s+= nums[i]-nums[i-(2*k+1)];
+        av=s/(2*k+1);
+        res[x]=av;
+        x++;
+       }
+return res;
+    }
+};
