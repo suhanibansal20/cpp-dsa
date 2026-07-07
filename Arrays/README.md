@@ -1,4 +1,4 @@
-# Arrays
+# Sliding Window
 
 This folder documents my journey of mastering array problems in C++ by following common DSA patterns used in coding interviews.
 
