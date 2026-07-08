@@ -1,0 +1,41 @@
+/*
+----------------------------------------------------
+Problem : Maximum Crads you can obtain from cards
+Platform : LeetCode (1423)
+Difficulty : Medium
+Topic : Arrays
+
+Approach:
+Using Sliding window but finding window size through size-k.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int maxScore(vector<int>& cardPoints, int k) {
+        int ws=cardPoints.size()-k;
+
+        int m=0;
+        int s=0;
+        int tts=0;
+        for(int i=0;i<cardPoints.size();i++){
+    tts+=cardPoints[i];
+        }
+        for(int i=0;i<ws;i++){
+            s+=cardPoints[i];
+
+        }
+        m=tts-s;
+        for(int i=ws;i<cardPoints.size();i++){
+            s+=cardPoints[i]-cardPoints[i-ws];
+            m=max(m,tts-s);
+        }
+        return m;
+    }
+};
