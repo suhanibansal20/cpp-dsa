@@ -1,0 +1,49 @@
+/*
+----------------------------------------------------
+Problem : Find all Anagrams in String
+Platform : LeetCode (438)
+Difficulty : Medium
+Topic : Arrays, Frequency Array
+
+Approach:
+Using sliding window pattern, and a frequency table to maintain char count of the strings (char coming --, going ++).
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        
+        vector <int> res;
+        vector<int> freq(26,0);
+        if(s.size()<p.size()){
+            return res;
+        }
+
+        for(int i=0;i<p.size();i++){
+            freq[p[i]-'a']++;
+            freq[s[i]-'a']--;
+        }
+        if(freq==vector(26,0)){
+            res.push_back(0);
+        }
+
+        for(int i=p.size();i<s.size();i++){
+    freq[s[i]-'a']--;
+    freq[s[i-p.size()]-'a']++;
+
+
+
+if(freq==vector(26,0)){
+    res.push_back(i-p.size()+1);
+}
+        }
+        return res;
+    }
+};
