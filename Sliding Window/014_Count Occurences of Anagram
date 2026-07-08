@@ -1,0 +1,45 @@
+/*
+----------------------------------------------------
+Problem : Count Occurences of Anagrams
+Platform : GFG
+Difficulty : Medium
+Topic : Strings
+
+Approach:
+Use sliding window and freq array.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int search(string &pat, string &txt) {
+        // code here
+        if(pat.size()>txt.size()){
+            return 0;
+        }
+        int ct=0;
+        vector<int>freq(26,0);
+        for(int i=0;i<pat.size();i++){
+            freq[pat[i]-'a']++;
+            freq[txt[i]-'a']--;
+        }
+        if(freq==vector(26,0)){
+            ct++;
+        }
+        for(int i=pat.size();i<txt.size();i++){
+            freq[txt[i]-'a']--;
+            freq[txt[i-pat.size()]-'a']++;
+            if(freq==vector(26,0)){
+                ct++;
+            }
+        }
+        return ct;
+        
+    }
+};
