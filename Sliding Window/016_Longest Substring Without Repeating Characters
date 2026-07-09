@@ -6,7 +6,7 @@ Difficulty : Medium
 Topic : Arrays, Set
 
 Approach:
-variable sliding window, set to track distinct elemnts.
+variable sliding window, hashmap to track distinct elemnts.
 
 Time Complexity : O(n)
 Space Complexity : O(n)
