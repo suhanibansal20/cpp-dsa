@@ -1,0 +1,46 @@
+/*
+----------------------------------------------------
+Problem : Maximum Erasure Value
+Platform : LeetCode (1695)
+Difficulty : Easy
+Topic : Arrays, Set
+
+Approach:
+variable slidign window, set to track distint characters.
+
+Time Complexity : O(n)
+Space Complexity : O(n)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int maximumUniqueSubarray(vector<int>& nums) {
+        int l=0;
+        set<int>s;
+        int sum=0;
+        int m=0;
+        int left=0;
+       
+
+        for(int i=0;i<nums.size();i++)
+        {
+          
+        while(s.find(nums[i])!=s.end()){
+            sum -= nums[left];
+        s.erase(nums[left]);
+            left++;
+            
+                         
+        }
+    s.insert(nums[i]);
+        sum+=nums[i];
+            
+        m=max(m,sum);
+        }  
+        return m; 
+         }
+};
