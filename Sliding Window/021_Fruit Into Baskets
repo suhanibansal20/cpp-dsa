@@ -1,0 +1,46 @@
+/*
+----------------------------------------------------
+Problem : Fruit Into Baskets
+Platform : LeetCode (904)
+Difficulty : Medium
+Topic : Arrays
+
+Approach:
+variable sliding window.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        unordered_map<int,int> res;
+int s=0;
+
+int l=0;
+        for(int i=0;i<fruits.size();i++){
+           
+             res[fruits[i]]++;
+             
+          
+            while(res.size()>2)
+               {
+                res[fruits[l]]--;
+                if(res[fruits[l]] == 0)
+      {  res.erase(fruits[l]);}
+                l++;
+            }
+             
+  s=max(s,i-l+1);
+            
+            
+        }
+        
+        return s;
+    }
+};
