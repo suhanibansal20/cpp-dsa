@@ -1,0 +1,37 @@
+/*
+----------------------------------------------------
+Problem : Minimum Size Subarray Sum
+Platform : LeetCode (209)
+Difficulty : Medium
+Topic : Arrays
+
+Approach:
+variable sliding window.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int l=0;
+        int sum=0;
+        int res= INT_MAX;
+        int r=0;
+        for(r=0;r<nums.size();r++){
+            sum+= nums[r];
+            while(sum>=target){
+                          res=min(res,r-l+1);
+                sum-=nums[l];
+                l++;
+            }
+  
+        }
+        return res==INT_MAX?0:res;
+    }
+};
