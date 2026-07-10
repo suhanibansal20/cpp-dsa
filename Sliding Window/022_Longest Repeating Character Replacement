@@ -1,0 +1,38 @@
+/*
+----------------------------------------------------
+Problem : Longest Repeating Character Replacement
+Platform : LeetCode (424)
+Difficulty : Medium
+Topic : frequency array, strings
+
+Approach:
+winodw size-maxfreq<k.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int characterReplacement(string s, int k) {
+        int l=0;
+        int maxfreq=0;
+        int ans=0;
+        vector<int>freq(26);
+        for(int i=0;i<s.size();i++){
+            freq[s[i]-'A']++;
+            maxfreq=max(maxfreq,freq[s[i]-'A']);
+            while((i-l+1)-maxfreq>k){
+                freq[s[l]-'A']--;
+                l++;
+            }
+            ans=max(ans,i-l+1);
+        }
+
+        return ans;
+    }
+};
