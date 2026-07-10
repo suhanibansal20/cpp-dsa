@@ -4,9 +4,9 @@ Welcome to my Data Structures & Algorithms repository!
 
 This repository contains my solutions to DSA problems from LeetCode, GeeksforGeeks, and other coding platforms. The solutions are written in C++ and organized topic-wise for easy navigation and revision.
 
----
+----
 
-## 👩‍💻 About
+## 👩‍💻 Aboutt
 
 - 💻 Language: C++
 - 📚 Platforms: LeetCode, GeeksforGeeks
