@@ -1,0 +1,44 @@
+/*
+----------------------------------------------------
+Problem : Sqaures of a sorted array
+Platform : LeetCode (977)
+Difficulty : Easy
+Topic : Arrays, HashMap
+
+Approach:
+Square all elements, pointers at two diff ends OR can use merge sorting.
+
+Time Complexity : O(n)
+Space Complexity : O(n)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int i=0;
+        int j=nums.size()-1;
+        int k=j;
+        vector<int>res(nums.size());
+        while(i<j){
+            int sum=nums[i]*nums[i];
+            int sum1=nums[j]*nums[j];
+
+            if(sum>sum1){
+               res[k]=sum;
+               k--;
+               i++;
+
+        }
+        else{
+            res[k]=sum1;
+            k--;
+            j--;
+        }}
+        res[0]=nums[i]*nums[i];
+        return res;
+    }
+};
