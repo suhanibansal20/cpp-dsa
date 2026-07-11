@@ -1,0 +1,46 @@
+/*
+---------------------------------------------------
+Problem : Count triplets smaller than sum
+Platform : GFG
+Difficulty : Medium
+Topic : Arrays
+
+Approach:
+3 sum logic.
+
+Time Complexity : O(n^2)
+Space Complexity : O(n)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int countTriplets(int sum, vector<int>& arr) {
+        // code here
+        sort(arr.begin(),arr.end());
+        int ct=0;
+        for(int i=0;i<arr.size();i++){
+            int l=i+1;
+            int r=arr.size()-1;
+            
+            while(l<r){
+                int res= arr[i]+arr[l]+arr[r];
+                
+                if(res<sum){
+                    ct+= r-l;
+                    l++;
+                    
+                }
+                else{
+                    r--;
+                }
+                
+            }
+        }
+        return ct;
+        
+    }
+};
