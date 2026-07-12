@@ -1,0 +1,45 @@
+/*
+----------------------------------------------------
+Problem : Max subarray sum with one deletion
+Platform : LeetCode (1186)
+Difficulty : Medium
+Topic : Arrays
+
+Approach:
+Use two kadane array from front and back, then at every idx find fw[i-1]+bw[i+1] and maintain its max.
+
+Time Complexity : O(n)
+Space Complexity : O(n)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int maximumSum(vector<int>& arr) {
+        if(arr.size()==1){return arr[0];}
+        vector<int> fw(arr.size());
+        vector<int> bw(arr.size());
+        int ans=arr[0];
+        fw[0]=arr[0];
+        for(int i=1;i<arr.size();i++)
+        {
+        fw[i]=max(arr[i],arr[i]+fw[i-1]);
+       
+        ans=max(ans,fw[i]);
+        }
+        bw[arr.size()-1]=arr[arr.size()-1];
+        for(int i=arr.size()-2;i>=0;i--){
+            bw[i]=max(arr[i],bw[i+1]+arr[i]);
+            
+        }
+        for(int i=1;i<arr.size()-1;i++){
+            ans=max(ans,fw[i-1]+bw[i+1]);
+        }
+        ans=max(ans,bw[1]);
+        ans=max(ans,fw[arr.size()-2]);
+        return ans;
+    }
+};
