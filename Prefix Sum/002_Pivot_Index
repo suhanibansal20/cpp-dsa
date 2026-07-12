@@ -1,0 +1,42 @@
+/*
+----------------------------------------------------
+Problem : Pivot index
+Platform : LeetCode (724)
+Difficulty : Easy
+Topic : Array
+
+Approach:
+Ufind both prefix and suffix sum, if both equal then return the answer.
+
+Time Complexity : O(n)
+Space Complexity : O(n)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) {
+        int curr=accumulate(nums.begin(),nums.end(),0);
+        int ls=0;
+        int rs=curr-ls-nums[0];
+         if(rs==ls){
+                return 0;
+            }
+        for(int i=1;i<nums.size();i++){
+               
+                 ls+=nums[i-1];
+                 rs=curr-ls-nums[i];
+
+                  if(rs==ls){
+                return i;
+            }
+            
+           
+        }
+
+       return -1;
+    }
+};
