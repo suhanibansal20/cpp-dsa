@@ -1,0 +1,30 @@
+/*
+----------------------------------------------------
+Problem : Maximum Subarray Sum
+Platform : LeetCode (53)
+Difficulty : Medium
+Topic : Arrays
+
+Approach:
+use kadane algo, find best at each idx and then best of overall idx .
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+lass Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int sum=nums[0];
+        int res=nums[0];
+        for(int i=1;i<nums.size();i++){
+            sum=max(nums[i],sum+nums[i]);
+             res=max(res,sum);
+        }
+        return res;
+    }
+};
