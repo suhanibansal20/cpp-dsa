@@ -1,0 +1,43 @@
+/*
+----------------------------------------------------
+Problem : Continous Array
+Platform : LeetCode
+Difficulty : Medium (525)
+Topic : Arrays, HashMap
+
+Approach:
+Use a HashMap to store prefix sum's first index, and if current prefix sum is equal to previos prefix sum update the answer.
+
+Time Complexity : O(n)
+Space Complexity : O(n)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int findMaxLength(vector<int>& nums) {
+        unordered_map<int,int> mp;
+        mp[0]=-1;
+        int ps=0;
+        int ans=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==0){
+                nums[i]=-1;
+            }
+            ps+=nums[i];
+            if(mp.count(ps)){
+                ans=max(ans,i-mp[ps]);
+            }
+            else{
+                mp[ps]=i;
+            }
+
+        }
+        return ans;
+
+
+    }
+};
