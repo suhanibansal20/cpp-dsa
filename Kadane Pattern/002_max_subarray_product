@@ -1,0 +1,35 @@
+/*
+----------------------------------------------------
+Problem : Max subarray Product
+Platform : LeetCode (152)
+Difficulty : Medium
+Topic : Arrays, HashMap
+
+Approach:
+min product and ax product at each idx, swap max and min if number is negative.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int mine=nums[0];
+        int res=nums[0];
+        int maxe=nums[0];
+        for(int i=1;i<nums.size();i++){
+            if(nums[i]<0){
+                swap(mine,maxe);
+            }
+            mine=min(nums[i],s*nums[i]);
+             maxe=max(nums[i],maxe*nums[i]);
+            res=max(res,maxe);
+        }
+        return res;
+    }
+};
