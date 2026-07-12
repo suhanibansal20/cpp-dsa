@@ -1,0 +1,37 @@
+/*
+----------------------------------------------------
+Problem :   Subarray sum equal K
+Platform : LeetCode
+Difficulty : Medium
+Topic : Arrays, HashMap
+
+Approach:
+Use a HashMap to store previus prefix sum and their frequency.
+
+Time Complexity : O(n)
+Space Complexity : O(n)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        unordered_map<int,int>hp;
+        hp[0]++;
+        int ps=0;
+        int ct=0;
+
+        for(int i=0;i<nums.size();i++){
+            ps+=nums[i];
+            if(hp.count(ps-k)){
+                ct+= hp[ps-k];
+                               
+            }
+            hp[ps]++;
+        }
+return ct;
+    }
+};
