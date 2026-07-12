@@ -1,0 +1,36 @@
+/*
+----------------------------------------------------
+Problem : Sub array sum divisble by K
+Platform : LeetCode (974)
+Difficulty : Medium
+Topic : Arrays, HashMap
+
+Approach:
+Use a HashMap to store remainders and its frequency, if remainders same then update.
+
+Time Complexity : O(n)
+Space Complexity : O(n)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+        unordered_map<int,int> mp;
+        mp[0]=1;
+        int ps=0;
+        int ans=0;
+        for(int i=0;i<nums.size();i++){
+            ps+=nums[i];
+            int l=(((ps%k)+k)%k);
+            if(mp.count(l)){
+                ans+=mp[l];
+            }
+            mp[l]++;
+        }
+        return ans;
+    }
+};
