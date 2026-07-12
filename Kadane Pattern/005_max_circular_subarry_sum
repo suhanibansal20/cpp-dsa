@@ -1,0 +1,50 @@
+
+/*
+----------------------------------------------------
+Problem : Maximum Circular subarray sum
+Platform : GFG
+Difficulty : Hard
+Topic : Arrays
+
+Approach:
+find max subarraysum, min subarray sum and total sum of array.
+nrml sum= max subarray sum and circularsum=totalsum-min subarraysum
+if all elemenst negative, means circ sum 0 so return nrml sum 
+return krdo max of nrmlsum or circularsum
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int maxCircularSum(vector<int> &arr) {
+        int totalSum = 0;
+        int currMaxSum = 0, currMinSum = 0;
+        int maxSum = arr[0], minSum = arr[0];
+
+        for (int i = 0; i < arr.size(); i++) {
+
+            // Kadane's to find maximum sum subarray
+            currMaxSum = max(currMaxSum + arr[i], arr[i]);
+            maxSum = max(maxSum, currMaxSum);
+
+            // Kadane's to find minimum sum subarray
+            currMinSum = min(currMinSum + arr[i], arr[i]);
+            minSum = min(minSum, currMinSum);
+
+            // Sum of all the elements of input array
+            totalSum = totalSum + arr[i];
+        }
+
+        int normalSum = maxSum;
+        int circularSum = totalSum - minSum;
+        if(minSum==totalSum){
+            return normalSum;
+        }
+        return max(circularSum,normalSum);
+}};
