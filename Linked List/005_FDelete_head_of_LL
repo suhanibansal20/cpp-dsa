@@ -1,0 +1,42 @@
+/*
+----------------------------------------------------
+Problem : Deletion of head
+Platform : GFG
+Difficulty : Easy
+Topic : LL
+
+Approach:
+if head is null, return null an if not just point the head to head's next.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+/*
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+*/
+class Solution {
+  public:
+    Node *deleteHead(Node *head) {
+        // code here
+        if(head==NULL){
+            return NULL;
+        }
+        head=head->next;
+        return head;
+    }
+};
