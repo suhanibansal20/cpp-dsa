@@ -1,0 +1,68 @@
+/*
+----------------------------------------------------
+Problem : Length of cycle
+Platform : GFG
+Difficulty : Medium
+Topic : LL
+
+Approach:
+Slow and fast ptrs meet, then ct
+
+Time Complexity : O(n)
+Space Complexity : O(n1
+----------------------------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+/*
+class Node {
+ public:
+    int data;
+    Node *next;
+
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+*/
+
+class Solution {
+  public:
+    int lengthOfLoop(Node *head) {
+        // code here
+        Node* slow=head;
+       
+        Node* fast=head;
+        
+        
+        while(fast && fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+            
+            if(slow==fast){
+                fast=head;
+                
+                while(slow!=fast){
+                    slow=slow->next;
+                    fast=fast->next;
+                   
+                    
+                    
+                }
+               
+            
+            int ct=1;
+            fast=fast->next;
+            while(fast!=slow){
+                ct++;
+                fast=fast->next;
+            }
+            return ct;}
+            
+        }
+        return 0;
+    }
+};
