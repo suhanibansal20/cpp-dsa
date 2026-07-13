@@ -1,0 +1,45 @@
+/*
+----------------------------------------------------
+Problem : Delete value
+Platform : GFG
+Difficulty : Easy
+Topic : LL
+
+
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+/*
+class Node {
+public:
+    int data;
+    Node* next;
+    Node(int data) {
+        this->data = data;
+        this->next = nullptr;
+    }
+};
+*/
+class Solution {
+  public:
+    Node* deleteNode(Node* head, int x) {
+        // code here
+        Node* temp=head;
+        if(x==1){
+            head=temp->next;
+            delete temp;
+            return head;
+        }
+        Node* prev=NULL;
+        for(int i=1;i<x;i++){
+            prev=temp;
+            temp=temp->next;
+        }
+        prev->next=temp->next;
+        delete temp;
+        return head;
+        
+    }
