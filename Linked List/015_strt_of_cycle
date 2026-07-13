@@ -1,0 +1,44 @@
+/*
+----------------------------------------------------
+Problem : Start node of cycle
+Platform : LeetCode
+Difficulty : Medium (142)
+Topic : LL
+
+Approach:
+slow and fast ptrs if meet cycle, and pt fast to head and move fast by 1 and when meet strt idx.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        ListNode* slow=head;
+        ListNode* fast=head;
+        while(fast!=NULL && fast->next != NULL){
+           
+            slow=slow->next;
+            fast=fast->next->next;
+             if(fast==slow){
+                ListNode* ptr= head;
+                while(ptr!=slow){
+                    ptr=ptr->next;
+                    slow=slow->next;
+                }
+                return ptr;
+            }
+        }
+        return NULL;
+    }
+};
