@@ -1,0 +1,39 @@
+/*
+----------------------------------------------------
+Problem : Two Sum
+Platform : LeetCode
+Difficulty : Easy
+Topic : Arrays, HashMap
+
+Approach:
+use while loop.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+/*
+class Node {
+  public:
+    int data;
+    Node* next;
+
+    Node(int val) {
+        data = val;
+        next = NULL;
+    }
+};
+*/
+
+class Solution {
+  public:
+    void printList(Node* head) {
+        // code here
+        Node* temp=head;
+        while(temp != NULL){
+            cout<<temp->data<<" ";
+            temp=temp->next;
+        }
+    }
+};
