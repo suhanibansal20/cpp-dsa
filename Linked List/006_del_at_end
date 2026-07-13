@@ -1,0 +1,48 @@
+/*
+----------------------------------------------------
+Problem : Del at End
+Platform : GFG
+Difficulty : Easy
+Topic :LL
+
+Approach:
+Use a HashMap to store previously visited elements.
+
+Time Complexity : O(n)
+Space Complexity : O(n)
+----------------------------------------------------
+*/
+
+/*
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+*/
+class Solution {
+  public:
+    Node* removeLastNode(Node* head) {
+        // code here
+        Node* temp=head;
+        if(head==NULL){
+            return NULL;
+        }
+        if(head->next==NULL){
+            return NULL;
+        }
+        Node* prev=NULL;
+        while(temp->next != NULL){
+            prev=temp;
+            temp=temp->next;
+        }
+        prev->next=NULL;
+        delete temp;
+        return head;
+    }
+};
