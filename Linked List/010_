@@ -1,0 +1,47 @@
+/*
+----------------------------------------------------
+Problem : Insertion at given pos
+Platform : GFG
+Difficulty : Easy
+Topic : LL
+
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+/*
+class Node {
+  public:
+    int data;
+    Node *next;
+    Node(int x) {
+        data = x;
+        next = nullptr;
+    }
+};
+*/
+
+class Solution {
+  public:
+    Node *insertPos(Node *head, int pos, int val) {
+        // code here
+        Node* newn=new Node(val);
+        Node* temp=head;
+        if(pos==1){
+            newn->next=head;
+            head=newn;
+            return head;
+            
+        }
+        Node* prev=NULL;
+        for(int i=1;i<pos;i++){
+            prev=temp;
+            temp=temp->next;
+        }
+        newn->next=prev->next;
+        prev->next=newn;
+        return head;
+    }
+};
