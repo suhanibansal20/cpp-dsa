@@ -1,0 +1,55 @@
+/*
+----------------------------------------------------
+Problem : Rotate List
+Platform : LeetCode
+Difficulty : Medium
+Topic : LL
+
+Approach:
+k%n to handle edge cases and find step by len-k
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if(head==NULL || head->next==NULL || k==0){
+            return head;
+        }
+        int len=1;
+        ListNode* temp=head;
+        while(temp->next != NULL){
+            temp=temp->next;
+            len++;
+        }
+        k=k%len;
+        if(k==0){
+            return head;}
+        temp->next=head;
+        
+            int setp=len-k;
+            ListNode* ptr=head;
+            for(int i=1;i<setp;i++){
+                ptr=ptr->next;
+        
+            }
+            ListNode* newhead=ptr->next;
+            ptr->next=NULL;
+            return newhead;
+        
+        
+    }
+};
