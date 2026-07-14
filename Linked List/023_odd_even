@@ -1,0 +1,45 @@
+/*
+----------------------------------------------------
+Problem : Odd even LL
+Platform : LeetCode (328)
+Difficulty : Medium
+Topic : LL
+
+Approach:
+odd and even ptrs to point respective nodes and evenhead to store first even node for last merge.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        if(head==NULL){
+            return NULL;
+        }
+        ListNode* odd=head;
+        ListNode* even=head->next;
+        ListNode* evenhead=even;
+        while(even!=NULL && even->next!=NULL){
+            odd->next=even->next;
+            odd=odd->next;
+            even->next=odd->next;
+            even=even->next;
+        }
+        odd->next=evenhead;
+        return head;
+        
+    }
+};
