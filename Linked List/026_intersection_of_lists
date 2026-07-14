@@ -1,0 +1,47 @@
+/*
+----------------------------------------------------
+Problem : Intersection of Lists
+Platform : LeetCode
+Difficulty : Easy (160)
+Topic : LL
+
+Approach:
+first pa will traverse its length if null then traverse length b same for pb and when these pointers will eet intersection node.
+
+Time Complexity : O(n)
+Space Complexity : O(1)
+----------------------------------------------------
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* pa=headA;
+        ListNode* pb=headB;
+
+        while(pa!=pb){
+            if(pa==NULL){
+                pa=headB;
+            }
+            else
+            {
+                pa=pa->next;
+            }
+            if(pb==NULL){
+                pb=headA;
+            }
+            else{
+                pb=pb->next;
+            }
+        }
+        return pa;
+    }
+};
